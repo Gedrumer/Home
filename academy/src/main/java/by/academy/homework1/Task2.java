@@ -29,7 +29,8 @@ public class Task2 {
 			break;
 		case "char":
 			char answer4 = q2.charAt(0);
-			System.out.println(answer4);
+			int answer4Int = (int) answer4;
+			System.out.println("Char code: "+answer4Int);
 			break;
 		case "string":
 			System.out.println("Hello " + q2);
