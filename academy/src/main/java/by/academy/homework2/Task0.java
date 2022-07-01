@@ -8,7 +8,13 @@ public class Task0 {
 	// Complete the pairs function below.
 	static int pairs(int k, int[] arr) {
 		int pairsCount = 0;
-		// write code here
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length; j++) {
+				if (arr[i] - arr[j] == k) {
+					pairsCount++;
+				}
+			}
+		}
 		return pairsCount;
 	}
 

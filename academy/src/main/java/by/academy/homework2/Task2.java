@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class Task2 {
 	public static void main(String[] args) {
-		// Ввести n слов с консоли. Найти слово, в котором число различных символов
-		// минимально. Если таких слов несколько, найти первое из них.
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter words:");
 		String[] question = scan.nextLine().split(" ");
@@ -14,4 +12,5 @@ public class Task2 {
 
 		scan.close();
 	}
+
 }
