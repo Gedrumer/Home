@@ -50,8 +50,11 @@ public abstract class Product {
 	}
 	public void inputProduct() {
 		System.out.println("Seller enter products:");
-		
-		
+			
 	}
+	public double calcFinalPrice() {
+		return price*discount();
+	}
+	
 
 }
