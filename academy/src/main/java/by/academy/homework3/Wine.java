@@ -1,11 +1,10 @@
 package by.academy.homework3;
 
-import by.academy.deal.Product;
-
 public class Wine extends Product {
 	private int age;
 	private String color;
 	private double cost;
+
 	public void setAge(int age) {
 		this.age = age;
 	}
@@ -21,5 +20,13 @@ public class Wine extends Product {
 	public String getColor() {
 		return color;
 	}
+
+	@Override
+	public double discount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 }

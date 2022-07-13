@@ -1,9 +1,15 @@
 package by.academy.homework3;
 
 public class DealTest {
+//	public Deal[] deals;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		User buyer = new User();
+		User seller = new User();
+		buyer.inputUserBuyer();
+		seller.inputUserSeller();
+		buyer.outputUserBuyer();
+		seller.outputUserSeller();
 
 	}
 

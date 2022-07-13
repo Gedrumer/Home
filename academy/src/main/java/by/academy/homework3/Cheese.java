@@ -1,7 +1,5 @@
 package by.academy.homework3;
 
-import by.academy.deal.Product;
-
 public class Cheese extends Product {
 	private double hardness;
 	private double richness;
@@ -25,12 +23,10 @@ public class Cheese extends Product {
 
 	@Override
 	public double discount() {
-		if(richness>20) {
+		if (richness > 20) {
 			return 0.6;
 		}
 		return 1;
 	}
-	
 
 }
-

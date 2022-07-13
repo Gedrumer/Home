@@ -1,41 +1,52 @@
 package by.academy.homework3;
 
-import by.academy.deal.Product;
-import by.academy.deal.User;
+import java.time.LocalDate;
 
 public class Deal {
-	private String[] productname;
-	private String LocalDateTime;
+	private LocalDate today = LocalDate.now();
 	private User buyer;
 	private User seller;
-	public void setProductName(String productname) {
-		this.productname = productname.split(" ");
+	private Product[] prod;
+
+	public Deal() {
 
 	}
-//	void userBuyer(String a) {
-//		buyer=a;
-//		
-//	}
-	public String[] getProductName() {
-		return productname;
+
+	public Deal(User seller, User buyer, Product[] prod) {
+		super();
+		getDate();
+		this.seller = seller;
+		this.buyer = buyer;
+		this.prod = prod;
+
 	}
-	public int deal(User seller,User buyer) {
-		
-				
-		return 0;
-		
-		
+
+	public User getSeller() {
+		return seller;
 	}
-	public int fullPrice(Product price,Product product,Product quantity,Product isTax) {
-		int fullPrice = 0;
-		
-		return fullPrice;
-		
+
+	public User getBuyer() {
+		return buyer;
 	}
-	
+
+	public Product[] getProducts() {
+		return prod;
+	}
+
+	public void cheque() {
+		System.out.println();
+	}
+
+	public LocalDate getDate() {
+		return today;
+	}
+
+	public double getSum() {
+		double s = 0;
+		for (Product p : prod) {
+			s += p.getProductPrice();
+		}
+		return s;
+	}
 
 }
-
-
-
-

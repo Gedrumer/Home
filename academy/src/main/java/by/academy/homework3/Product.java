@@ -1,49 +1,57 @@
 package by.academy.homework3;
 
-public class Product {
-	protected String product;
-	protected int price;
-	protected int quantity;
-	protected int isTax;
+import java.util.Scanner;
 
-	public void setProducts(String product) {
-		this.product = product;
+public abstract class Product {
+	Scanner scan = new Scanner(System.in);
+	protected String title;
+	protected double price;
+	protected double quantity;
+
+	public Product() {
+		super();
 	}
 
-	public String getProducts() {
-		return product;
-	}
-
-	public void setPrice(int price) {
+	public Product(String title, double price, double quantity) {
+		super();
+		this.title = title;
 		this.price = price;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public int getQuantity() {
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getQuantity() {
 		return quantity;
 	}
 
-	public void setIsTax(int isTax) {
-		this.isTax = isTax;
+	public abstract double discount();
+
+	public double getProductPrice() {
+		return price * quantity * discount();
 	}
-
-	public int getIsTax() {
-		return isTax;
-	}
-
-	public double discount() {
-		if (quantity > 10) {
-			return 0.4;
-		}
-		return 1;
-
+	public void inputProduct() {
+		System.out.println("Seller enter products:");
+		
+		
 	}
 
 }
