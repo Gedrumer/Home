@@ -2,9 +2,12 @@ package by.academy.homework3;
 
 import java.util.Scanner;
 
-public class User {
+public class User extends Regex {
 	private String name;
 	private double money;
+	private String dateOfBirth;
+	private String phone;
+	private String email;
 	Scanner scan = new Scanner(System.in);
 
 	public void setName(String name) {
@@ -21,6 +24,30 @@ public class User {
 
 	public double getMoney() {
 		return money;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 	public void inputUserBuyer() {
@@ -43,14 +70,16 @@ public class User {
 	}
 
 	public void outputUserBuyer() {
-		System.out.println(getName());
-		System.out.println(getMoney());
-
+		System.out.println("Buyer name: " + getName());
+		System.out.println("Buyer money: " + getMoney());
+		System.out.println("Buyer date of birth: " + getDateOfBirth());
+		System.out.println("Buyer phone number: " + getPhone());
+		System.out.println("Buyer email: " + getEmail());
 	}
 
 	public void outputUserSeller() {
-		System.out.println(getName());
-		System.out.println(getMoney());
+		System.out.println("Seller name: " + getName());
+		System.out.println("Seller money: " + getMoney());
 
 	}
 

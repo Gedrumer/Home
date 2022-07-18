@@ -1,9 +1,16 @@
 package by.academy.homework3;
 
 public class Cheese extends Product {
-	private double hardness;
 	private double richness;
-	private double cost;
+
+	public Cheese() {
+		super();
+	}
+
+	public Cheese(String title, double price, double quantity, double richness) {
+		super(title, price, quantity);
+		this.richness = richness;
+	}
 
 	public void setRichness(double richness) {
 		this.richness = richness;
@@ -13,20 +20,21 @@ public class Cheese extends Product {
 		return richness;
 	}
 
-	public void setHardness(double hardness) {
-		this.hardness = hardness;
+	public double sum() {
+		return price * quantity;
 	}
 
-	public double getHardness() {
-		return hardness;
+	public double sumWithDiscount() {
+		return sum() * discount();
 	}
 
 	@Override
 	public double discount() {
-		if (richness > 20) {
-			return 0.6;
+		if (richness > 30) {
+			return 0.76;
+		} else {
+			return 1;
 		}
-		return 1;
 	}
 
 }

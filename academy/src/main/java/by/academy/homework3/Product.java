@@ -1,9 +1,6 @@
 package by.academy.homework3;
 
-import java.util.Scanner;
-
 public abstract class Product {
-	Scanner scan = new Scanner(System.in);
 	protected String title;
 	protected double price;
 	protected double quantity;
@@ -48,13 +45,12 @@ public abstract class Product {
 	public double getProductPrice() {
 		return price * quantity * discount();
 	}
-	public void inputProduct() {
-		System.out.println("Seller enter products:");
-			
-	}
+
 	public double calcFinalPrice() {
-		return price*discount();
+		return price * discount();
 	}
-	
+	public double getPriceQuant() {
+		return price * quantity;
+	}
 
 }
