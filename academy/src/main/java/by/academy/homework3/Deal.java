@@ -42,7 +42,10 @@ public class Deal {
 	public double getSum() {
 		double s = 0;
 		for (Product p : prod) {
-			s += p.getProductPrice();
+			if (p != null) {
+				s += p.getProductPrice();
+
+			}
 		}
 		return s;
 	}
@@ -90,14 +93,35 @@ public class Deal {
 		}
 	}
 
+	public void cheque() {
+		for (Product element : prod) {
+			if (element != null) {
+				System.out.println("Product: " + element.getTitle() + " Quantity:" + element.getQuantity() + " *"
+						+ " Price:" + element.getPrice() + " =" + " Final price:" + element.getProductPrice());
+			}
+		}
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder deal = new StringBuilder();
 		deal.append("Date:");
 		deal.append(getDate());
-		deal.append(", purchase amount:");
+		deal.append(".\nBuyer name:");
+		deal.append(buyer.getName());
+		deal.append(".\nBuyer phone number:");
+		deal.append(buyer.getPhone());
+		deal.append(".\nBuyer email:");
+		deal.append(buyer.getEmail());
+		deal.append(".\nBuyer date of birth:");
+		deal.append(buyer.getDateOfBirth());
+		deal.append(".\nSeller name:");
+		deal.append(seller.getName());
+		deal.append(".\nPurchase amount:");
 		deal.append(getSum());
-		deal.append(", your balance:");
+		deal.append(".\nBuyer balance:");
+		deal.append(buyer.getMoney());
+		deal.append(".\nSeller balance:");
 		deal.append(seller.getMoney());
 		return deal.toString();
 	}

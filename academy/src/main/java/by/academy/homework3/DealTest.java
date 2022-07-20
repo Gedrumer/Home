@@ -1,11 +1,14 @@
 package by.academy.homework3;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DealTest {
 
 	public static void main(String[] args) {
-		Product[] shoppingCart = new Product[3];
+		Product[] shoppingCart = new Product[20];
 		Scanner scan = new Scanner(System.in);
 		EmailValidator email = new EmailValidator();
 		Regex reg = new Regex();
@@ -46,10 +49,25 @@ public class DealTest {
 		while (true) {
 			System.out.println("Enter date of birth: ");
 			String dateOfBirth = scan.nextLine();
-			if (reg.verification(dateOfBirth) == true) {
+			if (reg.verificationA(dateOfBirth) == true ) {
+				DateTimeFormatter formatterDTa=DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.US);
+				LocalDate time=LocalDate.parse(dateOfBirth, formatterDTa);	
+				System.out.println("Day:"+time.getDayOfMonth());
+				System.out.println("Month:"+time.getMonth());
+				System.out.println("Year:"+time.getYear());
 				buyer.setDateOfBirth(dateOfBirth);
 				break;
-			} else {
+			} 
+			if(reg.verificationB(dateOfBirth) == true) {
+				DateTimeFormatter formatterDTa=DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
+				LocalDate time=LocalDate.parse(dateOfBirth, formatterDTa);	
+				System.out.println("Day:"+time.getDayOfMonth());
+				System.out.println("Month:"+time.getMonth());
+				System.out.println("Year:"+time.getYear());
+				buyer.setDateOfBirth(dateOfBirth);
+				break;
+			}
+			else {
 				System.out.println("Date entered incorrectly.");
 			}
 		}
@@ -63,9 +81,6 @@ public class DealTest {
 				System.out.println("Email entered incorrectly.");
 			}
 		}
-
-		buyer.outputUserBuyer();
-		seller.outputUserSeller();
 		Deal deal = new Deal(seller, buyer, shoppingCart);
 		int index = 0;
 		while (true) {
@@ -82,16 +97,15 @@ public class DealTest {
 				System.out.println("Enter quantity:");
 				double quant = scan.nextDouble();
 				productList[answ - 1].setQuantity(quant);
-				deal.addProduct(productList[answ - 1]);
+				shoppingCart[index] = productList[answ - 1];
 				index++;
 			}
 
 			if (answ == 0) {
 				System.out.println("Your shopping cart:");
 				for (int i = 0; i < index; i++) {
-//					System.out.println(shoppingCart[i].getTitle() + "\nQuantity:" + shoppingCart[i].getQuantity()
-//							+ ". Unit price:" + shoppingCart[i].getPrice());
-					System.out.println(deal.getProduct(i).getTitle());
+					System.out.println(shoppingCart[i].getTitle() + "\nQuantity:" + shoppingCart[i].getQuantity()
+							+ ". Unit price:" + shoppingCart[i].getPrice());
 
 				}
 				break;
@@ -103,19 +117,20 @@ public class DealTest {
 			int answ2 = scan.nextInt();
 			if (answ2 == 1) {
 				for (int i = 0; i < index; i++) {
-					System.out.println(shoppingCart[i].getTitle() + "\nQuantity:" + shoppingCart[i].getQuantity()
-							+ ". Unit price:" + shoppingCart[i].getPrice());
+					System.out.println((i + 1) + ":" + deal.getProduct(i).getTitle());
 				}
+				index--;
 				System.out.println("Enter the number of the product you want to delete:");
 				int answ3 = scan.nextInt();
 				deal.removeProduct(answ3);
 			}
 			if (answ2 == 2) {
+
 				break;
 			}
 		}
-		System.out.println("Total amount:" + deal.getSum());
 		deal.doDeal();
+		deal.cheque();
 		System.out.println(deal.toString());
 		scan.close();
 	}
