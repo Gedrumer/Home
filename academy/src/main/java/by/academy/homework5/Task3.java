@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 public class Task3<T> implements Iterator<T> {
 	private T[][] array;
+	private int i, j;
 
 	public Task3() {
 		super();
@@ -15,14 +16,18 @@ public class Task3<T> implements Iterator<T> {
 
 	@Override
 	public boolean hasNext() {
-		
-		return false;
+
+		return i < array.length && j < array[i].length;
 	}
 
 	@Override
 	public T next() {
-		// TODO Auto-generated method stub
-		return null;
+		Integer newarray = (Integer) array[i][j++];
+		if (j >= array[i].length) {
+			i++;
+			j = 0;
+		}
+		return (T) newarray;
 	}
 
 }

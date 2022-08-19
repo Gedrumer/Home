@@ -62,9 +62,23 @@ public class Solution {
 	 *
 	 */
 	public static DoublyLinkedListNode reverse(DoublyLinkedList list) {
-		
-		return null;
+		DoublyLinkedListNode node = list.head;
+
+		while (node != null) {
+			DoublyLinkedListNode t = node.next;
+			node.next = node.prev;
+			node.prev = t;
+
+			node = t;
+		}
+
+		node = list.head;
+		list.head = list.tail;
+		list.tail = node;
+
+		return list.head;
 	}
+	
 
 	private static final Scanner scanner = new Scanner(System.in);
 
