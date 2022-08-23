@@ -2,18 +2,21 @@ package by.academy.homework4;
 
 import java.util.Arrays;
 
-public class ArrayT<T> {
+public class ArrayT<T extends Object> {
 	private int index = 0;
 	T[] array;
 
+	@SuppressWarnings("unchecked")
 	public ArrayT() {
 		this.array = (T[]) (new Object[16]);
 	}
 
+	@SuppressWarnings("unchecked")
 	public ArrayT(int size) {
 		this.array = (T[]) (new Object[size]);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void add(T obj) {
 		if (index == array.length) {
 			grow();
@@ -21,6 +24,7 @@ public class ArrayT<T> {
 		array[index++] = (T) array;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void grow() {
 		int newLength = (int) (array.length == 0 ? 1 : array.length * 1.5);
 		T[] newT = (T[]) (new Object[newLength]);
@@ -28,6 +32,7 @@ public class ArrayT<T> {
 		array = newT;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void getIndex(int index) {
 		for (int i = 0; i < array.length; i++) {
 			if (index == i) {
@@ -50,6 +55,7 @@ public class ArrayT<T> {
 		return array.length;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void remove(int index) {
 		index = index - 1;
 		T[] newT = (T[]) (new Object[array.length - 1]);
@@ -58,6 +64,7 @@ public class ArrayT<T> {
 		array = newT;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void remove(T obj) {
 		int index = 0;
 		for (int i = 0; i < array.length; i++) {

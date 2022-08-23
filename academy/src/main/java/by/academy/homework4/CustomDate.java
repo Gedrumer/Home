@@ -89,16 +89,16 @@ public class CustomDate {
 	public static void main(String[] args) {
 		CustomDate date = new CustomDate();
 		CustomDate date1 = new CustomDate();
-		CustomDate.Year year=new CustomDate().new Year();
+		CustomDate.Year year = new CustomDate().new Year();
 		date.setDate();
 		date1.setDate();
-		year.bissextile();
 		System.out.println("Day of week(first date): " + date.getDayOfWeek() + ".");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate startDate = LocalDate.parse(date.getDate(), formatter);
 		LocalDate endDate = LocalDate.parse(date1.getDate(), formatter);
 		int days = (int) ChronoUnit.DAYS.between(startDate, endDate);
 		System.out.println("Number of days in a given time period: " + days + ".");
+		year.bissextile();
 	}
 
 }
