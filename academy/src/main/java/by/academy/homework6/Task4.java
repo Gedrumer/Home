@@ -12,6 +12,7 @@ public class Task4 {
 	public static void main(String[] args) throws IOException {
 		Random rand = new Random();
 		StringBuilder build = new StringBuilder();
+		int size = 0;
 		File dirs = new File("./io/Task4");
 		if (!dirs.exists()) {
 			dirs.mkdirs();
@@ -28,12 +29,20 @@ public class Task4 {
 			}
 
 		}
+		try (BufferedReader fr = new BufferedReader(new FileReader("./io/Task4/text.txt"))) {
+			while (fr.read() != -1) {
+				size++;
+			}
+
+		} catch (IOException e) {
+			System.out.print(e.getMessage());
+		}
 		for (int i = 0; i < 100; i++) {
 			try (BufferedReader fileReader = new BufferedReader(new FileReader("./io/Task4/text.txt"));
 					FileWriter fileWriter = new FileWriter("./io/Task4/" + (i + 1) + ".txt")) {
 				String a = null;
 				while ((a = fileReader.readLine()) != null) {
-					int end = rand.nextInt(0, 574);
+					int end = rand.nextInt(0, size);
 					fileWriter.write(a.substring(0, end));
 				}
 			}
@@ -41,9 +50,9 @@ public class Task4 {
 		for (int i = 0; i < 100; i++) {
 			try (BufferedReader fileReader = new BufferedReader(new FileReader("./io/Task4/" + (i + 1) + ".txt"));
 					FileWriter fileWriter = new FileWriter("./io/Task4/result.txt")) {
-				
+
 				File file = new File("./io/Task4/" + (i + 1) + ".txt");
-				build.append("File: "+file.getName()+". Size:"+file.length());
+				build.append("File: " + file.getName() + ". Size:" + file.length());
 				build.append("\n");
 				fileWriter.append(build.toString());
 			}
@@ -57,7 +66,6 @@ public class Task4 {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-
 	}
 
 }
