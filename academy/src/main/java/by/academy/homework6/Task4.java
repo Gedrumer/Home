@@ -33,7 +33,7 @@ public class Task4 {
 					FileWriter fileWriter = new FileWriter("./io/Task4/" + (i + 1) + ".txt")) {
 				String a = null;
 				while ((a = fileReader.readLine()) != null) {
-					int end = rand.nextInt(0, 576);
+					int end = rand.nextInt(0, 574);
 					fileWriter.write(a.substring(0, end));
 				}
 			}
