@@ -1,6 +1,7 @@
 package by.academy.finaltest.air;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Airline {
@@ -52,6 +53,9 @@ public class Airline {
 	        }
 	        return filteredAirline;
 	    }
+	 public void sortPlane() {
+		 listAirplane.sort(Comparator.comparingDouble(Airplane::getRangeOfFlight));
+	 }
 
 	@Override
 	public String toString() {
